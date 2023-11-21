@@ -10,7 +10,7 @@ public class SchoolManagementSystem {
     private static final int MAX_NUM_OF_COURSES_PER_STUDENT = 5;
     private static final int MAX_NUM_OF_TEACHERS = 20;
     private static final int MAX_NUM_OF_COURSES_PER_SCHOOL = 30;
-
+    private static final int MAX_NUM_OF_STUDENTS_PER_COURSE = 5;
 
 
 }
