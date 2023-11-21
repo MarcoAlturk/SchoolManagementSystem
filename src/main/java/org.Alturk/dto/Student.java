@@ -9,7 +9,11 @@ public class Student {
     private Course[] courses;
     private String id;
     private int courseNum;
-    private int nextId;
+    private int nextId = 1;
     private String lname;
     private Department department;
+
+    public Student() {
+        this.id = String.format("S%03d", nextId++);
+    }
 }

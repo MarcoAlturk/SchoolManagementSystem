@@ -9,4 +9,8 @@ public class Teacher {
     private String fname;
     private Department department;
     private String id;
+    private int nextId = 1;
+    public Teacher() {
+        this.id = String.format("T%03d", nextId++);
+    }
 }

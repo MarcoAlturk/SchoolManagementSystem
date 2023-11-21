@@ -12,4 +12,8 @@ public class Course {
     private int studentNum;
     private Teacher teacher;
     private String courseName;
+    private int nextId = 1;
+    public Course() {
+        this.id = String.format("C%03d", nextId++);
+    }
 }
