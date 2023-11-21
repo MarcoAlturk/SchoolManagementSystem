@@ -6,12 +6,12 @@ package org.Alturk.dto;
  */
 public class Course {
     private double credit;
-    private String id;
     private Student[] students;
     private Department department;
     private int studentNum;
     private Teacher teacher;
     private String courseName;
+    private String id;
     private int nextId = 1;
     public Course() {
         this.id = String.format("C%03d", nextId++);

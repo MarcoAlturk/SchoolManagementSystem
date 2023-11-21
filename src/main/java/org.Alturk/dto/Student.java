@@ -6,13 +6,12 @@ package org.Alturk.dto;
  */
 public class Student {
     private String fname;
-    private Course[] courses;
-    private String id;
-    private int courseNum;
-    private int nextId = 1;
     private String lname;
+    private Course[] courses;
     private Department department;
-
+    private int courseNum;
+    private String id;
+    private int nextId = 1;
     public Student() {
         this.id = String.format("S%03d", nextId++);
     }
