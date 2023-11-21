@@ -1,9 +1,12 @@
 package org.Alturk.dto;
 
+import lombok.ToString;
+
 /**
  * Teacher
  * @author Marco Alturk (2359284)
  */
+@ToString
 public class Teacher {
     private String fname;
     private String lname;

@@ -1,9 +1,12 @@
 package org.Alturk.dto;
 
+import lombok.ToString;
+
 /**
  * Course
  * @author Marco Alturk (2359284)
  */
+@ToString
 public class Course {
     private double credit;
     private Student[] students;

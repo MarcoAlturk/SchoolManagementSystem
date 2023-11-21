@@ -1,10 +1,12 @@
 package org.Alturk.dto;
 
+import lombok.ToString;
+
 /**
  * Department
  * @author Marco Alturk (2359284)
  */
-
+@ToString
 public class Department {
     private String departmentName;
     private String id;
