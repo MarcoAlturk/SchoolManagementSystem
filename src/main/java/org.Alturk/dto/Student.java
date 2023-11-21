@@ -12,7 +12,10 @@ public class Student {
     private int courseNum;
     private String id;
     private int nextId = 1;
-    public Student() {
+    public Student(String fname, String lname, Department department) {
+        this.fname = fname;
+        this.lname = lname;
+        this.department = department;
         this.id = String.format("S%03d", nextId++);
     }
 }
