@@ -1,6 +1,8 @@
 package org.Alturk.dto;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -9,6 +11,8 @@ import lombok.ToString;
  */
 @EqualsAndHashCode
 @ToString
+@Getter
+@Setter
 public class SchoolManagementSystem {
     private static final int MAX_NUM_OF_DEPARTMENTS = 5;
     private static final int MAX_NUM_OF_STUDENTS = 200;

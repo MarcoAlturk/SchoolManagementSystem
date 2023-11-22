@@ -1,5 +1,8 @@
 package org.Alturk.dto;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -7,6 +10,9 @@ import lombok.ToString;
  * @author Marco Alturk (2359284)
  */
 @ToString
+@EqualsAndHashCode
+@Getter
+@Setter
 public class Course {
     private double credit;
     private Student[] students;
