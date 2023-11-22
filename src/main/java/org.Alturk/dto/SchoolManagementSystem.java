@@ -1,9 +1,14 @@
 package org.Alturk.dto;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 /**
  * SchoolManagementSystem
  * @author Marco Alturk (2359284)
  */
+@EqualsAndHashCode
+@ToString
 public class SchoolManagementSystem {
     private static final int MAX_NUM_OF_DEPARTMENTS = 5;
     private static final int MAX_NUM_OF_STUDENTS = 200;

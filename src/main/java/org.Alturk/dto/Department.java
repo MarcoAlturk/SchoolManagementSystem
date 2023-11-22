@@ -1,11 +1,13 @@
 package org.Alturk.dto;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
  * Department
  * @author Marco Alturk (2359284)
  */
+@EqualsAndHashCode
 @ToString
 public class Department {
     private String departmentName;
