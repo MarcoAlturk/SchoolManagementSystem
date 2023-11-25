@@ -117,4 +117,31 @@ public class SchoolManagementSystem {
     public void addStudent(String fname, String lname, String departmentName) {
 
     }
+
+    /**
+     * Add a new department
+     * @param departmentName the department name
+     */
+    public void addDepartment(String departmentName) {
+
+    }
+
+    /**
+     * Add a course
+     * @param courseName the name of the course
+     * @param credits the number of credits of the course
+     * @param departmentId the id of the department of the course
+     */
+    public void addCourse(String courseName, double credits, String departmentId) {
+
+    }
+
+    /**
+     * registers a course for a student
+     * @param studentId the id of the student
+     * @param courseId the id of the course
+     */
+    public void registerCourse(String studentId, String courseId) {
+
+    }
 }
