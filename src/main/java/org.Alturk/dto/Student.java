@@ -5,11 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Arrays;
+
 /**
  * Student
  * @author Marco Alturk (2359284)
  */
-@ToString
 @EqualsAndHashCode
 @Getter
 @Setter
@@ -26,5 +27,17 @@ public class Student {
         this.lname = lname;
         this.department = department;
         this.id = String.format("S%03d", nextId++);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", courses=" + Arrays.toString(courses) +
+                ", department=" + department +
+                ", courseNum=" + courseNum +
+                ", id='" + id + '\'' +
+                '}';
     }
 }

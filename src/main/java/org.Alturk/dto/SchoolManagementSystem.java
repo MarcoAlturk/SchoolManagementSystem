@@ -54,6 +54,11 @@ public class SchoolManagementSystem {
      * @return the teacher
      */
     public Teacher findTeacher(String id) {
+        for (Teacher teacher : teachers) {
+            if (teacher != null && teacher.getId().equals(id)) {
+                return teacher;
+            }
+        }
         return null;
     }
 
@@ -63,6 +68,11 @@ public class SchoolManagementSystem {
      * @return the course
      */
     public Course findCourse(String id) {
+        for (Course course : courses) {
+            if (course != null && course.getId().equals(id)) {
+                return course;
+            }
+        }
         return null;
     }
 
@@ -72,6 +82,11 @@ public class SchoolManagementSystem {
      * @return the student
      */
     public Student findStudent(String id) {
+        for (Student student : students) {
+            if (student != null && student.getId().equals(id)) {
+                return student;
+            }
+        }
         return null;
     }
 
