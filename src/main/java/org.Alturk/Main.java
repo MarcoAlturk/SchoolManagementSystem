@@ -13,10 +13,17 @@ public class Main {
         SchoolManagementSystem schoolManagementSystem = new SchoolManagementSystem();
 
         schoolManagementSystem.addDepartment("Science Department");
+        schoolManagementSystem.addDepartment("Math Department");
+        schoolManagementSystem.addDepartment("Physics Department");
+        schoolManagementSystem.addDepartment("French Department");
+        schoolManagementSystem.addDepartment("English Department");
+        schoolManagementSystem.addDepartment("Spanish Department");
+
         schoolManagementSystem.printDepartments();
-        schoolManagementSystem.addTeacher("Marco", "Alturk", "D001");
-        schoolManagementSystem.printTeachers();
-        System.out.println(schoolManagementSystem.findDepartment("D001"));
+//        schoolManagementSystem.printDepartments();
+//        schoolManagementSystem.addTeacher("Marco", "Alturk", "D001");
+//        schoolManagementSystem.printTeachers();
+//        System.out.println(schoolManagementSystem.findDepartment("D001"));
 
     }
 }

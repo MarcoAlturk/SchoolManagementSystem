@@ -105,6 +105,7 @@ public class SchoolManagementSystem {
      * Prints all the departments
      */
     public void printDepartments() {
+        System.out.println("Displaying All Departments : \n ----------------- ");
         for (Department department : departments) {
             if (department != null) {
                 System.out.println(department);
