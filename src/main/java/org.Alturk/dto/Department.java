@@ -10,7 +10,6 @@ import lombok.ToString;
  * @author Marco Alturk (2359284)
  */
 @EqualsAndHashCode
-@ToString
 @Getter
 @Setter
 public class Department {
@@ -21,5 +20,13 @@ public class Department {
     public Department(String departmentName) {
         this.id = String.format("D%03d", nextId++);
         this.departmentName = departmentName;
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "departmentName='" + departmentName + '\'' +
+                ", id='" + id + '\'' +
+                '}';
     }
 }

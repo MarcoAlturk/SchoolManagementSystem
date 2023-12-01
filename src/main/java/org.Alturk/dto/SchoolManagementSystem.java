@@ -21,6 +21,15 @@ public class SchoolManagementSystem {
     private static final int MAX_NUM_OF_COURSES_PER_SCHOOL = 30;
     private static final int MAX_NUM_OF_STUDENTS_PER_COURSE = 5;
 
+    private Student[] students = new Student[MAX_NUM_OF_STUDENTS];
+    private int numOfStudents = 0;
+    private Teacher[] teachers = new Teacher[MAX_NUM_OF_TEACHERS];
+    private int numOfTeachers = 0;
+    private Course[] courses = new Course[MAX_NUM_OF_COURSES_PER_SCHOOL];
+    private int numOfCourses = 0;
+    private Department[] departments = new Department[MAX_NUM_OF_DEPARTMENTS];
+    private int numOfDepartments = 0;
+
     public SchoolManagementSystem() {
 
     }
@@ -31,7 +40,12 @@ public class SchoolManagementSystem {
      * @return the department
      */
     public Department findDepartment(String id) {
-
+        for (Department department : departments) {
+            if (department != null && department.getId().equals(id)) {
+                return department;
+            }
+        }
+        return null;
     }
 
     /**
@@ -40,7 +54,7 @@ public class SchoolManagementSystem {
      * @return the teacher
      */
     public Teacher findTeacher(String id) {
-
+        return null;
     }
 
     /**
@@ -49,7 +63,7 @@ public class SchoolManagementSystem {
      * @return the course
      */
     public Course findCourse(String id) {
-
+        return null;
     }
 
     /**
@@ -58,21 +72,29 @@ public class SchoolManagementSystem {
      * @return the student
      */
     public Student findStudent(String id) {
-
+        return null;
     }
 
     /**
      * Prints all the teachers
      */
     public void printTeachers() {
-
+        for (Teacher teacher : teachers) {
+            if (teacher != null) {
+                System.out.println(teacher);
+            }
+        }
     }
 
     /**
      * Prints all the departments
      */
     public void printDepartments() {
-
+        for (Department department : departments) {
+            if (department != null) {
+                System.out.println(department);
+            }
+        }
     }
 
     /**
@@ -102,10 +124,16 @@ public class SchoolManagementSystem {
      * Add a teacher
      * @param fname Teacher's first name
      * @param lname Teacher's last name
-     * @param departmentName Department's name
+     * @param departmentId Department's name
      */
-    public void addTeacher(String fname, String lname, String departmentName) {
-
+    public void addTeacher(String fname, String lname, String departmentId) {
+        if (numOfTeachers < MAX_NUM_OF_TEACHERS) {
+            Teacher newTeacher = new Teacher(fname, lname, findDepartment(departmentId));
+            teachers[numOfTeachers++] = newTeacher;
+            System.out.printf("%s Added Successfully!\n", newTeacher);
+            return;
+        }
+        System.out.println("Max number of teachers reached!");
     }
 
     /**
@@ -120,10 +148,16 @@ public class SchoolManagementSystem {
 
     /**
      * Add a new department
-     * @param departmentName the department name
+     * @param departmentName the department id
      */
     public void addDepartment(String departmentName) {
-
+        if (numOfDepartments < MAX_NUM_OF_DEPARTMENTS) {
+            Department newDepartment = new Department(departmentName);
+            departments[numOfDepartments++] = newDepartment;
+            System.out.printf("%s Added Successfully!\n", newDepartment);
+            return;
+        }
+        System.out.println("Max number of departments reached!");
     }
 
     /**
