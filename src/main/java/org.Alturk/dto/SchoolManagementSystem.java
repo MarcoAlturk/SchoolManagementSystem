@@ -116,14 +116,22 @@ public class SchoolManagementSystem {
      * Prints all the students
      */
     public void printStudents() {
-
+        for (Student student : students) {
+            if (student != null) {
+                System.out.println(student);
+            }
+        }
     }
 
     /**
      * Prints all the courses
      */
     public void printCourses() {
-
+        for (Course course : courses) {
+            if (course != null) {
+                System.out.println(course);
+            }
+        }
     }
 
     /**
