@@ -15,7 +15,7 @@ import lombok.ToString;
 public class Department {
     private String departmentName;
     private String id;
-    private int nextId = 1;
+    private static int nextId = 1;
 
     public Department(String departmentName) {
         this.id = String.format("D%03d", nextId++);

@@ -2,6 +2,7 @@ package org.Alturk;
 
 import org.Alturk.dto.Department;
 import org.Alturk.dto.SchoolManagementSystem;
+import org.Alturk.dto.Teacher;
 
 import java.util.Arrays;
 
@@ -20,10 +21,11 @@ public class Main {
         schoolManagementSystem.addDepartment("Spanish Department");
 
         schoolManagementSystem.printDepartments();
-//        schoolManagementSystem.printDepartments();
-//        schoolManagementSystem.addTeacher("Marco", "Alturk", "D001");
+
+        for (int i = 0; i <= 20; i++) {
+            schoolManagementSystem.addTeacher("caca", "popo", "D003");
+        }
 //        schoolManagementSystem.printTeachers();
-//        System.out.println(schoolManagementSystem.findDepartment("D001"));
 
     }
 }

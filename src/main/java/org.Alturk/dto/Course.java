@@ -22,7 +22,7 @@ public class Course {
     private Teacher teacher;
     private String courseName;
     private String id;
-    private int nextId = 1;
+    private static int nextId = 1;
     public Course(String courseName, double credit, Department department) {
         this.courseName = courseName;
         this.credit = credit;

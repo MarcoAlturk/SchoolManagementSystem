@@ -21,7 +21,7 @@ public class Student {
     private Department department;
     private int courseNum;
     private String id;
-    private int nextId = 1;
+    private static int nextId = 1;
     public Student(String fname, String lname, Department department) {
         this.fname = fname;
         this.lname = lname;
