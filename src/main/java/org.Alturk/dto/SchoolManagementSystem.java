@@ -94,6 +94,7 @@ public class SchoolManagementSystem {
      * Prints all the teachers
      */
     public void printTeachers() {
+        System.out.println("Displaying All Teachers : \n ----------------- ");
         for (Teacher teacher : teachers) {
             if (teacher != null) {
                 System.out.println(teacher);
@@ -117,6 +118,7 @@ public class SchoolManagementSystem {
      * Prints all the students
      */
     public void printStudents() {
+        System.out.println("Displaying All Students : \n ----------------- ");
         for (Student student : students) {
             if (student != null) {
                 System.out.println(student);
@@ -128,6 +130,7 @@ public class SchoolManagementSystem {
      * Prints all the courses
      */
     public void printCourses() {
+        System.out.println("Displaying All Courses : \n ----------------- ");
         for (Course course : courses) {
             if (course != null) {
                 System.out.println(course);

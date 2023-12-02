@@ -4,6 +4,7 @@ import org.Alturk.dto.Department;
 import org.Alturk.dto.SchoolManagementSystem;
 import org.Alturk.dto.Teacher;
 
+import java.io.PrintStream;
 import java.util.Arrays;
 
 /**
@@ -25,7 +26,10 @@ public class Main {
         for (int i = 0; i <= 20; i++) {
             schoolManagementSystem.addTeacher("caca", "popo", "D003");
         }
-//        schoolManagementSystem.printTeachers();
+        schoolManagementSystem.printTeachers();
+        System.out.println(schoolManagementSystem.findDepartment("D003"));
+        System.out.println(schoolManagementSystem.findTeacher("T004"));
+        System.out.println(schoolManagementSystem.findCourse("T004"));
 
     }
 }
