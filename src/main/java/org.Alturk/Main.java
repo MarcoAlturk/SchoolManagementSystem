@@ -8,7 +8,7 @@ import java.io.PrintStream;
 import java.util.Arrays;
 
 /**
- * @author Marco Alturk (2359284)
+ * @author Marco Alturk (2359284) asdsauidasdiusduisaduiad
  */
 public class Main {
     public static void main(String[] args) {
@@ -24,8 +24,9 @@ public class Main {
         schoolManagementSystem.printDepartments();
 
         for (int i = 0; i <= 20; i++) {
-            schoolManagementSystem.addTeacher("caca", "popo", "D003");
+            schoolManagementSystem.addTeacher("Marco", "Alturk", "D003");
         }
+
         schoolManagementSystem.printTeachers();
         System.out.println(schoolManagementSystem.findDepartment("D003"));
         System.out.println(schoolManagementSystem.findTeacher("T004"));
