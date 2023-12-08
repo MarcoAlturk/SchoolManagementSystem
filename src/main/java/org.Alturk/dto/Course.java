@@ -30,16 +30,34 @@ public class Course {
         this.id = String.format("C%03d", nextId++);
     }
 
+    private String displayStudents() {
+        if (students == null) {
+            return "[]";
+        }
+        String studentsString = "[";
+        for (Student student : students) {
+            studentsString += student + ", ";
+        }
+        return studentsString + "]";
+    }
+
     @Override
     public String toString() {
+        if (teacher != null) {
+            return "Course{" +
+                    "id='" + id + "'" +
+                    ",courseName='" + courseName + "'" +
+                    ",credit=" + credit +
+                    ",teacher=" + teacher.getFname() + " " + teacher.getLname() +
+                    ",department='" + department + "'" +
+                    "students=" + displayStudents() + "}";
+        }
         return "Course{" +
-                "credit=" + credit +
-                ", students=" + Arrays.toString(students) +
-                ", department=" + department +
-                ", studentNum=" + studentNum +
-                ", teacher=" + teacher +
-                ", courseName='" + courseName + '\'' +
-                ", id='" + id + '\'' +
-                '}';
+                "id='" + id + "'" +
+                ",courseName='" + courseName + "'" +
+                ",credit=" + credit +
+                ",teacher=null"+
+                ",department='" + department + "'" +
+                "students=" + displayStudents() + "}";
     }
 }

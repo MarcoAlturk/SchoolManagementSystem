@@ -29,12 +29,23 @@ public class Student {
         this.id = String.format("S%03d", nextId++);
     }
 
+    private String displayCourses() {
+        if (courses == null) {
+            return "[]";
+        }
+        String coursesString = "[";
+        for (Course course : courses) {
+            coursesString += course + ", ";
+        }
+        return coursesString + "]";
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "fname='" + fname + '\'' +
                 ", lname='" + lname + '\'' +
-                ", courses=" + Arrays.toString(courses) +
+                ", courses=" + displayCourses() +
                 ", department=" + department +
                 ", courseNum=" + courseNum +
                 ", id='" + id + '\'' +

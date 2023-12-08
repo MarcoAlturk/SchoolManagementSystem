@@ -39,7 +39,7 @@ public class SchoolManagementSystem {
      * @param id the department id
      * @return the department
      */
-    public Department findDepartment(String id) {
+    private Department findDepartment(String id) {
         for (Department department : departments) {
             if (department != null && department.getId().equals(id)) {
                 return department;
@@ -53,7 +53,7 @@ public class SchoolManagementSystem {
      * @param id the teacher id
      * @return the teacher
      */
-    public Teacher findTeacher(String id) {
+    private Teacher findTeacher(String id) {
         for (Teacher teacher : teachers) {
             if (teacher != null && teacher.getId().equals(id)) {
                 return teacher;
@@ -67,7 +67,7 @@ public class SchoolManagementSystem {
      * @param id the course id
      * @return the course
      */
-    public Course findCourse(String id) {
+    private Course findCourse(String id) {
         for (Course course : courses) {
             if (course != null && course.getId().equals(id)) {
                 return course;
@@ -81,7 +81,7 @@ public class SchoolManagementSystem {
      * @param id the student id
      * @return the student
      */
-    public Student findStudent(String id) {
+    private Student findStudent(String id) {
         for (Student student : students) {
             if (student != null && student.getId().equals(id)) {
                 return student;
@@ -144,6 +144,18 @@ public class SchoolManagementSystem {
      * @param courseId the id of the course
      */
     public void modifyCourseTeacher(String teacherId, String courseId) {
+        if (findTeacher(teacherId) != null && findCourse(courseId) != null) {
+            if (findTeacher(teacherId).getDepartment() == findCourse(courseId).getDepartment()) {
+                findCourse(courseId).setTeacher(findTeacher(teacherId));
+                System.out.printf("%s teacher info updated successfully.\n", findCourse(courseId));
+                return;
+            }
+
+            System.out.println("The teacher is not in that department!");
+            return;
+
+        }
+        System.out.println("Teacher id or course id is not found!");
 
     }
 
@@ -194,7 +206,17 @@ public class SchoolManagementSystem {
      * @param departmentId the id of the department of the course
      */
     public void addCourse(String courseName, double credits, String departmentId) {
-
+        if (findDepartment(departmentId) == null) {
+            System.out.println("No department with that id!");
+            return;
+        }
+        if (numOfCourses < MAX_NUM_OF_COURSES_PER_SCHOOL) {
+            Course newCourse = new Course(courseName, credits, findDepartment(departmentId));
+            courses[numOfCourses++] = newCourse;
+            System.out.printf("%s Added Successfully!\n", newCourse);
+            return;
+        }
+        System.out.println("Max number of departments reached!");
     }
 
     /**

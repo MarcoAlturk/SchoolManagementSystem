@@ -17,19 +17,21 @@ public class Main {
         schoolManagementSystem.addDepartment("Science Department");
         schoolManagementSystem.addDepartment("Math Department");
         schoolManagementSystem.addDepartment("Physics Department");
-        schoolManagementSystem.addDepartment("French Department");
         schoolManagementSystem.addDepartment("English Department");
-        schoolManagementSystem.addDepartment("Spanish Department");
+        schoolManagementSystem.addDepartment("History Department");
 
         schoolManagementSystem.printDepartments();
+        schoolManagementSystem.addCourse("Math 101", 4.0, "D002");
+        schoolManagementSystem.addCourse("Chemistry 101", 3.0, "D001");
+        schoolManagementSystem.addCourse("History 101", 3.0, "D005");
 
-        for (int i = 0; i <= 20; i++) {
-            schoolManagementSystem.addTeacher("caca", "popo", "D003");
-        }
+        schoolManagementSystem.addTeacher("Marco", "Alturk", "D002");
+
         schoolManagementSystem.printTeachers();
-        System.out.println(schoolManagementSystem.findDepartment("D003"));
-        System.out.println(schoolManagementSystem.findTeacher("T004"));
-        System.out.println(schoolManagementSystem.findCourse("T004"));
+        schoolManagementSystem.printCourses();
+
+        schoolManagementSystem.modifyCourseTeacher("T001", "C001");
+
 
     }
 }
