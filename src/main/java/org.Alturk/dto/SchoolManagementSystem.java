@@ -183,10 +183,20 @@ public class SchoolManagementSystem {
      * Add a student
      * @param fname Student's first name
      * @param lname Student's last name
-     * @param departmentName Department's name
+     * @param departmentId Department's id
      */
-    public void addStudent(String fname, String lname, String departmentName) {
-
+    public void addStudent(String fname, String lname, String departmentId) {
+        if (numOfStudents < MAX_NUM_OF_STUDENTS) {
+            if (findDepartment(departmentId) != null) {
+                Student newStudent = new Student(fname, lname, findDepartment(departmentId));
+                students[numOfStudents++] = newStudent;
+                System.out.printf("%s added successfully.\n", newStudent);
+                return;
+            }
+            System.out.println("Department with that id is not found!");
+            return;
+        }
+        System.out.println("Max student reached, add a new student failed.");
     }
 
     /**

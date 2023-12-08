@@ -43,12 +43,12 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "fname='" + fname + '\'' +
-                ", lname='" + lname + '\'' +
-                ", courses=" + displayCourses() +
+                "id='" + id + '\'' +
+                ", fname='" + fname + '\'' +
+                ", lname=" + lname + '\'' +
                 ", department=" + department +
                 ", courseNum=" + courseNum +
-                ", id='" + id + '\'' +
+                ", courses=" + displayCourses() +
                 '}';
     }
 }

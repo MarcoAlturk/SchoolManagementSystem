@@ -25,12 +25,16 @@ public class Main {
         schoolManagementSystem.addCourse("Chemistry 101", 3.0, "D001");
         schoolManagementSystem.addCourse("History 101", 3.0, "D005");
 
-        schoolManagementSystem.addTeacher("Marco", "Alturk", "D002");
+        schoolManagementSystem.addTeacher("Yi", "Wang", "D002");
 
         schoolManagementSystem.printTeachers();
         schoolManagementSystem.printCourses();
 
+        schoolManagementSystem.addStudent("Marco", "Alturk", "D005");
+
         schoolManagementSystem.modifyCourseTeacher("T001", "C002");
+        
+
 
 
     }
