@@ -54,10 +54,10 @@ public class Course {
         }
         return "Course{" +
                 "id='" + id + "'" +
-                ",courseName='" + courseName + "'" +
-                ",credit=" + credit +
-                ",teacher=null"+
-                ",department='" + department + "'" +
-                "students=" + displayStudents() + "}";
+                ", courseName='" + courseName + "'" +
+                ", credit=" + credit +
+                ", teacher=null"+
+                ", department='" + department + "'" +
+                ", students=" + displayStudents() + "}";
     }
 }

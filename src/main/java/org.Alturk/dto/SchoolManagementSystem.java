@@ -144,18 +144,22 @@ public class SchoolManagementSystem {
      * @param courseId the id of the course
      */
     public void modifyCourseTeacher(String teacherId, String courseId) {
-        if (findTeacher(teacherId) != null && findCourse(courseId) != null) {
-            if (findTeacher(teacherId).getDepartment() == findCourse(courseId).getDepartment()) {
-                findCourse(courseId).setTeacher(findTeacher(teacherId));
-                System.out.printf("%s teacher info updated successfully.\n", findCourse(courseId));
+        if (findTeacher(teacherId) != null) {
+            if (findCourse(courseId) != null) {
+                if (findTeacher(teacherId).getDepartment() == findCourse(courseId).getDepartment()) {
+                    findCourse(courseId).setTeacher(findTeacher(teacherId));
+                    System.out.printf("%s teacher info updated successfully.\n", findCourse(courseId));
+                    return;
+                }
+
+                System.out.println("The teacher is not in that department!");
                 return;
             }
-
-            System.out.println("The teacher is not in that department!");
+            System.out.println("Course with that id is not found!");
             return;
-
         }
-        System.out.println("Teacher id or course id is not found!");
+
+        System.out.println("Teacher with that id is not found!");
 
     }
 
