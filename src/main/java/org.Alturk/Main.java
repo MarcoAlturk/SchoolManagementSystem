@@ -57,6 +57,7 @@ public class Main {
         schoolManagementSystem.registerCourse("S001", "C003");
         schoolManagementSystem.registerCourse("S001", "C004");
 
+        // Max out a course
         schoolManagementSystem.registerCourse("S002", "C001");
         schoolManagementSystem.registerCourse("S003", "C001");
         schoolManagementSystem.registerCourse("S004", "C001");
@@ -67,6 +68,7 @@ public class Main {
 
         schoolManagementSystem.registerCourse("S001", "C005");
 
+        // student cannot register for the same course twice
         schoolManagementSystem.registerCourse("S059", "C006");
         schoolManagementSystem.registerCourse("S059", "C006");
     }

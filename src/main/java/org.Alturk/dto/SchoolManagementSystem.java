@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.function.DoubleFunction;
-
 /**
  * SchoolManagementSystem
  * @author Marco Alturk (2359284)
@@ -47,6 +45,7 @@ public class SchoolManagementSystem {
                 return department;
             }
         }
+
         return null;
     }
 
@@ -61,6 +60,7 @@ public class SchoolManagementSystem {
                 return teacher;
             }
         }
+
         return null;
     }
 
@@ -75,6 +75,7 @@ public class SchoolManagementSystem {
                 return course;
             }
         }
+
         return null;
     }
 
@@ -89,6 +90,7 @@ public class SchoolManagementSystem {
                 return student;
             }
         }
+
         return null;
     }
 
@@ -97,6 +99,7 @@ public class SchoolManagementSystem {
      */
     public void printTeachers() {
         System.out.println("Displaying All Teachers : \n ----------------- ");
+
         for (Teacher teacher : teachers) {
             if (teacher != null) {
                 System.out.println(teacher);
@@ -109,6 +112,7 @@ public class SchoolManagementSystem {
      */
     public void printDepartments() {
         System.out.println("Displaying All Departments : \n ----------------- ");
+
         for (Department department : departments) {
             if (department != null) {
                 System.out.println(department);
@@ -121,6 +125,7 @@ public class SchoolManagementSystem {
      */
     public void printStudents() {
         System.out.println("Displaying All Students : \n ----------------- ");
+
         for (Student student : students) {
             if (student != null) {
                 System.out.println(student);
@@ -133,6 +138,7 @@ public class SchoolManagementSystem {
      */
     public void printCourses() {
         System.out.println("Displaying All Courses : \n ----------------- ");
+
         for (Course course : courses) {
             if (course != null) {
                 System.out.println(course);
@@ -151,24 +157,20 @@ public class SchoolManagementSystem {
                 if (findTeacher(teacherId).getDepartment() == findCourse(courseId).getDepartment()) {
                     findCourse(courseId).setTeacher(findTeacher(teacherId));
                     System.out.printf("%s teacher info updated successfully.\n", findCourse(courseId));
+
                     return;
                 }
-
                 System.out.println("The teacher is not in that department!");
+
                 return;
             }
             System.out.printf("Cannot find any course match with courseId %s, modify teacher for course %s failed.\n",
                     courseId, courseId);
+
             return;
         }
-
         System.out.printf("Cannot find any teacher match with teacherId %s, modify teacher for course %s failed.\n",
                         teacherId, courseId);
-
-        /**
-         * Cannot find any teacher match with teacherId T007, modify teacher for course C001 failed.
-         * Cannot find any course match with courseId C007, modify teacher for course C007 failed.
-         */
     }
 
     /**
@@ -182,6 +184,7 @@ public class SchoolManagementSystem {
             Teacher newTeacher = new Teacher(fname, lname, findDepartment(departmentId));
             teachers[numOfTeachers++] = newTeacher;
             System.out.printf("%s Added Successfully!\n", newTeacher);
+
             return;
         }
         System.out.println("Max teacher reached, add a new teacher failed.");
@@ -199,9 +202,11 @@ public class SchoolManagementSystem {
                 Student newStudent = new Student(fname, lname, findDepartment(departmentId));
                 students[numOfStudents++] = newStudent;
                 System.out.printf("%s added successfully.\n", newStudent);
+
                 return;
             }
             System.out.println("Department with that id is not found!");
+
             return;
         }
         System.out.println("Max student reached, add a new student failed.");
@@ -216,6 +221,7 @@ public class SchoolManagementSystem {
             Department newDepartment = new Department(departmentName);
             departments[numOfDepartments++] = newDepartment;
             System.out.printf("%s Added Successfully!\n", newDepartment);
+
             return;
         }
         System.out.println("Max department reached, add a new department failed.");
@@ -230,12 +236,14 @@ public class SchoolManagementSystem {
     public void addCourse(String courseName, double credits, String departmentId) {
         if (findDepartment(departmentId) == null) {
             System.out.println("No department with that id!");
+
             return;
         }
         if (numOfCourses < MAX_NUM_OF_COURSES_PER_SCHOOL) {
             Course newCourse = new Course(courseName, credits, findDepartment(departmentId));
             courses[numOfCourses++] = newCourse;
             System.out.printf("%s Added Successfully!\n", newCourse);
+
             return;
         }
         System.out.println("Max course reached, add a new course failed.");
@@ -250,23 +258,27 @@ public class SchoolManagementSystem {
         if (findStudent(studentId) != null) {
             if (findCourse(courseId) != null) {
                 if (findStudent(studentId).getNumOfCourses() + 1 < MAX_NUM_OF_COURSES_PER_STUDENT) {
-                    if (findCourse(courseId).getNumOfStudents() + 1< MAX_NUM_OF_STUDENTS_PER_COURSE) {
+                    if (findCourse(courseId).getNumOfStudents() + 1 < MAX_NUM_OF_STUDENTS_PER_COURSE) {
                         if (findStudent(studentId).getNumOfCourses() > 0){
                             for (Course course : findStudent(studentId).getCourses()) {
                                 if (course != null && course.getId().equals(courseId)) {
                                     System.out.printf("Student %s has already registered Course %s," +
                                                     " register course %s for student %s failed.\n", studentId, courseId, courseId,
                                             studentId);
+
                                     return;
                                 }
                             }
                         }
+
                         findStudent(studentId).setNumOfCourses(findStudent(studentId).getNumOfCourses());
                         findCourse(courseId).setNumOfStudents(findCourse(courseId).getNumOfStudents());
                         findCourse(courseId).addStudent(findStudent(studentId));
                         findStudent(studentId).addCourse(findCourse(courseId));
+
                         System.out.printf("Student register course successfully. \nLatest student info: %s\nLatest " +
                                 "course info: %s\n", findStudent(studentId), findCourse(courseId));
+
 
                         return;
                     }
@@ -277,14 +289,17 @@ public class SchoolManagementSystem {
                 }
                 System.out.printf("Student %s has already registered %s courses, register course for student %s failed.\n",
                         studentId, MAX_NUM_OF_COURSES_PER_STUDENT, studentId);
+
                 return;
             }
 
             System.out.printf("Cannot find any student match with courseId %s, register course for student %s failed.\n",
                     courseId, studentId);
+
             return;
         }
         System.out.printf("Cannot find any student match with studentId %s, register course for student %s failed.\n",
                         studentId, studentId);
+
     }
 }
