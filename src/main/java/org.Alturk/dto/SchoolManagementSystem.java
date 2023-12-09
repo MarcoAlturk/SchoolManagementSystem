@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.function.DoubleFunction;
+
 /**
  * SchoolManagementSystem
  * @author Marco Alturk (2359284)
@@ -14,12 +16,12 @@ import lombok.ToString;
 @Getter
 @Setter
 public class SchoolManagementSystem {
-    private static final int MAX_NUM_OF_DEPARTMENTS = 5;
-    private static final int MAX_NUM_OF_STUDENTS = 200;
-    private static final int MAX_NUM_OF_COURSES_PER_STUDENT = 5;
-    private static final int MAX_NUM_OF_TEACHERS = 20;
-    private static final int MAX_NUM_OF_COURSES_PER_SCHOOL = 30;
-    private static final int MAX_NUM_OF_STUDENTS_PER_COURSE = 5;
+    public static final int MAX_NUM_OF_DEPARTMENTS = 5;
+    public static final int MAX_NUM_OF_STUDENTS = 200;
+    public static final int MAX_NUM_OF_COURSES_PER_STUDENT = 5;
+    public static final int MAX_NUM_OF_TEACHERS = 20;
+    public static final int MAX_NUM_OF_COURSES_PER_SCHOOL = 30;
+    public static final int MAX_NUM_OF_STUDENTS_PER_COURSE = 5;
 
     private Student[] students = new Student[MAX_NUM_OF_STUDENTS];
     private int numOfStudents = 0;
@@ -155,12 +157,18 @@ public class SchoolManagementSystem {
                 System.out.println("The teacher is not in that department!");
                 return;
             }
-            System.out.println("Course with that id is not found!");
+            System.out.printf("Cannot find any course match with courseId %s, modify teacher for course %s failed.\n",
+                    courseId, courseId);
             return;
         }
 
-        System.out.println("Teacher with that id is not found!");
+        System.out.printf("Cannot find any teacher match with teacherId %s, modify teacher for course %s failed.\n",
+                        teacherId, courseId);
 
+        /**
+         * Cannot find any teacher match with teacherId T007, modify teacher for course C001 failed.
+         * Cannot find any course match with courseId C007, modify teacher for course C007 failed.
+         */
     }
 
     /**
@@ -176,7 +184,7 @@ public class SchoolManagementSystem {
             System.out.printf("%s Added Successfully!\n", newTeacher);
             return;
         }
-        System.out.println("Max number of teachers reached!");
+        System.out.println("Max teacher reached, add a new teacher failed.");
     }
 
     /**
@@ -210,7 +218,7 @@ public class SchoolManagementSystem {
             System.out.printf("%s Added Successfully!\n", newDepartment);
             return;
         }
-        System.out.println("Max number of departments reached!");
+        System.out.println("Max department reached, add a new department failed.");
     }
 
     /**
@@ -230,15 +238,53 @@ public class SchoolManagementSystem {
             System.out.printf("%s Added Successfully!\n", newCourse);
             return;
         }
-        System.out.println("Max number of departments reached!");
+        System.out.println("Max course reached, add a new course failed.");
     }
 
     /**
-     * registers a course for a student
+     * Registers a course for a student
      * @param studentId the id of the student
      * @param courseId the id of the course
      */
     public void registerCourse(String studentId, String courseId) {
+        if (findStudent(studentId) != null) {
+            if (findCourse(courseId) != null) {
+                if (findStudent(studentId).getNumOfCourses() + 1 < MAX_NUM_OF_COURSES_PER_STUDENT) {
+                    if (findCourse(courseId).getNumOfStudents() + 1< MAX_NUM_OF_STUDENTS_PER_COURSE) {
+                        if (findStudent(studentId).getNumOfCourses() > 0){
+                            for (Course course : findStudent(studentId).getCourses()) {
+                                if (course != null && course.getId().equals(courseId)) {
+                                    System.out.printf("Student %s has already registered Course %s," +
+                                                    " register course %s for student %s failed.\n", studentId, courseId, courseId,
+                                            studentId);
+                                    return;
+                                }
+                            }
+                        }
+                        findStudent(studentId).setNumOfCourses(findStudent(studentId).getNumOfCourses());
+                        findCourse(courseId).setNumOfStudents(findCourse(courseId).getNumOfStudents());
+                        findCourse(courseId).addStudent(findStudent(studentId));
+                        findStudent(studentId).addCourse(findCourse(courseId));
+                        System.out.printf("Student register course successfully. \nLatest student info: %s\nLatest " +
+                                "course info: %s\n", findStudent(studentId), findCourse(courseId));
 
+                        return;
+                    }
+                    System.out.printf("Course %s has been fully registered, register course %s for student %s failed.\n",
+                            courseId, courseId, studentId);
+                    return;
+
+                }
+                System.out.printf("Student %s has already registered %s courses, register course for student %s failed.\n",
+                        studentId, MAX_NUM_OF_COURSES_PER_STUDENT, studentId);
+                return;
+            }
+
+            System.out.printf("Cannot find any student match with courseId %s, register course for student %s failed.\n",
+                    courseId, studentId);
+            return;
+        }
+        System.out.printf("Cannot find any student match with studentId %s, register course for student %s failed.\n",
+                        studentId, studentId);
     }
 }

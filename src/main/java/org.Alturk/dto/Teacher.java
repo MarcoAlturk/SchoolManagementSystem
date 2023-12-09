@@ -3,7 +3,6 @@ package org.Alturk.dto;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 /**
  * Teacher
@@ -28,10 +27,10 @@ public class Teacher {
     @Override
     public String toString() {
         return "Teacher{" +
-                "fname='" + fname + '\'' +
+                "id='" + id + '\'' +
+                ", fname='" + fname + '\'' +
                 ", lname='" + lname + '\'' +
-                ", department=" + department.getDepartmentName() +
-                ", id='" + id + '\'' +
-                '}';
+                ", department='" + department.getDepartmentName() +
+                "'}";
     }
 }

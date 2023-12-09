@@ -3,9 +3,6 @@ package org.Alturk.dto;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-
-import java.util.Arrays;
 
 /**
  * Student
@@ -17,9 +14,9 @@ import java.util.Arrays;
 public class Student {
     private String fname;
     private String lname;
-    private Course[] courses;
+    private Course[] courses = new Course[SchoolManagementSystem.MAX_NUM_OF_STUDENTS_PER_COURSE];
+    private int numOfCourses = 0;
     private Department department;
-    private int courseNum;
     private String id;
     private static int nextId = 1;
     public Student(String fname, String lname, Department department) {
@@ -35,9 +32,15 @@ public class Student {
         }
         String coursesString = "[";
         for (Course course : courses) {
-            coursesString += course + ", ";
+            if (course != null ) {
+                coursesString += "'" + course.getCourseName() + "', ";
+            }
         }
         return coursesString + "]";
+    }
+
+    public void addCourse(Course course) {
+        courses[numOfCourses++] = course;
     }
 
     @Override
@@ -47,7 +50,7 @@ public class Student {
                 ", fname='" + fname + '\'' +
                 ", lname=" + lname + '\'' +
                 ", department=" + department +
-                ", courseNum=" + courseNum +
+                ", courseNum=" + numOfCourses +
                 ", courses=" + displayCourses() +
                 '}';
     }

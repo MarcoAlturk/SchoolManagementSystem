@@ -3,9 +3,6 @@ package org.Alturk.dto;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-
-import java.util.Arrays;
 
 /**
  * Course
@@ -16,9 +13,9 @@ import java.util.Arrays;
 @Setter
 public class Course {
     private double credit;
-    private Student[] students;
+    private Student[] students = new Student[SchoolManagementSystem.MAX_NUM_OF_COURSES_PER_STUDENT];
+    private int numOfStudents = 0;
     private Department department;
-    private int studentNum;
     private Teacher teacher;
     private String courseName;
     private String id;
@@ -36,9 +33,15 @@ public class Course {
         }
         String studentsString = "[";
         for (Student student : students) {
-            studentsString += student + ", ";
+            if (student != null ) {
+                studentsString += student.getFname() + " " + student.getLname() + ", ";
+            }
         }
         return studentsString + "]";
+    }
+
+    public void addStudent(Student student) {
+        students[numOfStudents++] = student;
     }
 
     @Override
@@ -46,18 +49,18 @@ public class Course {
         if (teacher != null) {
             return "Course{" +
                     "id='" + id + "'" +
-                    ",courseName='" + courseName + "'" +
-                    ",credit=" + credit +
-                    ",teacher=" + teacher.getFname() + " " + teacher.getLname() +
-                    ",department='" + department + "'" +
-                    "students=" + displayStudents() + "}";
+                    ", courseName='" + courseName + "'" +
+                    ", credit=" + credit +
+                    ", teacher=" + teacher.getFname() + " " + teacher.getLname() +
+                    ", department='" + department.getDepartmentName() + "'" +
+                    ", students=" + displayStudents() + "}";
         }
         return "Course{" +
                 "id='" + id + "'" +
                 ", courseName='" + courseName + "'" +
                 ", credit=" + credit +
                 ", teacher=null"+
-                ", department='" + department + "'" +
+                ", department='" + department.getDepartmentName() + "'" +
                 ", students=" + displayStudents() + "}";
     }
 }
