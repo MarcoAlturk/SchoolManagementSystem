@@ -272,8 +272,6 @@ public class SchoolManagementSystem {
                             }
                         }
 
-                        findStudent(studentId).setNumOfCourses(findStudent(studentId).getNumOfCourses());
-                        findCourse(courseId).setNumOfStudents(findCourse(courseId).getNumOfStudents());
                         findCourse(courseId).addStudent(findStudent(studentId));
                         findStudent(studentId).addCourse(findCourse(courseId));
 
