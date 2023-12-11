@@ -7,7 +7,7 @@ import org.Alturk.dto.SchoolManagementSystem;
  */
 public class Main {
     public static void main(String[] args) {
-        SchoolManagementSystem schoolManagementSystem = new SchoolManagementSystem();
+        SchoolManagementSystem schoolManagementSystem = new SchoolManagementSystem("Vanier College");
         schoolManagementSystem.addDepartment("Computer Science");
         schoolManagementSystem.addDepartment("Social Science");
         schoolManagementSystem.addDepartment("Computer Technology");
